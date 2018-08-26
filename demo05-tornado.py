@@ -6,6 +6,12 @@ class MainHandler(tornado.web.RequestHandler):
         self.write("hello,world\n")
     def post(self):
         self.write("hello,world>>>post\n")
+    def put(self):
+        self.write("hello,world>>>put\n")
+        pass
+    def delete(self):
+        self.write("hello,world>>>delete\n")
+        
 if __name__ =="__main__":
     settings={
     'debug':True,
