@@ -9,6 +9,20 @@ def get_content(url):
     
     return content
 
+def getImages(info):
+    """ .doc"""
+    regx=r'class="BDE_Image" src="(.+?\.jpg)"'
+    pat = re.compile(regx)
+    images_code = re.findall(pat,info)
+    print(images_code)
+    print("image len:%d"%(len(images_code)))
+
+    i=0
+    for imgurl in images_code:
+        print(imgurl)
+        urllib.urlretrieve(imgurl,'%s.jpg'%(str(i)))
+        i +=1
 if __name__ == '__main__':
     myurl='http://tieba.baidu.com/p/2772656630'
-    print(get_content(myurl))
+    info = get_content(myurl)
+    getImages(info)
