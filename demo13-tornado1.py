@@ -18,7 +18,9 @@ class WeiboHandler(BassHandler):
     @tornado.web.authenticated
     def get(self):
         return self.render('weibo_add.html')
-
+    def post(self):
+        result = self.get_argument("content",None)
+        self.write(result)
 class LoginHandler(BassHandler):
     def get(self):
         self.write('<html><body><form action="/login" method="post">'
